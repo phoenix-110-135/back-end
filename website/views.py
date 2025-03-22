@@ -3,7 +3,7 @@ from django.http import HttpResponse,JsonResponse
 
 
 def home_view(requests):
-    return render(requests,'index.html')
+    return render(requests,'website\index.html')
 
 def about_view(requests):
     return render(requests,'about.html')
