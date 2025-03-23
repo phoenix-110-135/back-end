@@ -1,2 +1,2 @@
-# mysite
+# django site🤗
  django site
