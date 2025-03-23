@@ -11,6 +11,15 @@ def about_view(requests):
 def contact_view(requests):
     return render(requests,'website\contact.html')
 
+def elements_view(requests):
+    return render(requests,'website\elements.html')
+
+def blog_home_view(requests):
+    return render(requests,'blog/blog-home.html')
+
+def blog_single_view(requests):
+    return render(requests,'blog/blog-single.html')
+
 def http_test(requests):
     return HttpResponse("<h1>good</h1>")
 
