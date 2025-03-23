@@ -6,11 +6,11 @@ app_name = 'web'
 
 urlpatterns = [
     path("",home_view,name="index"),
-    path("elements",elements_view),
+    path("elements",elements_view,name="elements"),
     path("about",about_view,name="about"),
     path("contact",contact_view,name="contact"),
     path("blog-home",blog_home_view,name="blog_home"),
-    path("blog-single",contact_view,name="blog_single"),
+    path("blog-single",blog_single_view,name="blog_single"),
     path("http-test",http_test),
     path("json-test",json_test)
     
