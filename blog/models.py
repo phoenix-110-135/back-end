@@ -6,7 +6,7 @@ class Post(models.Model):
     # author 
 
     title = models.CharField(max_length=255)
-    contex = models.TextField()
+    content= models.TextField()
     # tag
     # category
     counted_view = models.IntegerField(default=0) 
