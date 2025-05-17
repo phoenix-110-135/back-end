@@ -7,13 +7,8 @@
 </head>
 <body>
 
-    {% for post in posts%}
-        {% if post.status == 1%}
-        <h1>{{post.title}}</h1>
-        <p>{{post.content}}</p>
-        <small>{{post.published_date}}</small>
-        
-        {% endif %}
-    {% endfor %}
+
+    <p>{{posts.title}}</p>
+
 </body>
 </html>
