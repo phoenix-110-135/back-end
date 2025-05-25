@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'myapp.middleware.log_ip_middleware.LogIPMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -131,3 +132,31 @@ STATICFILES_DIRS = [
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+import os
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'ip_format': {
+            'format': '%(message)s',
+        },
+    },
+    'handlers': {
+        'ip_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'ip_logs.txt'),
+            'formatter': 'ip_format',
+        },
+    },
+    'loggers': {
+        'ip_logger': {
+            'handlers': ['ip_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

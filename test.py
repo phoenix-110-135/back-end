@@ -1,12 +1,13 @@
-from flask import Flask ,jsonify
-import requests
-response = requests.get("https://ayatblog.ir/date-time-api/time")
-js = response.json()
-app = Flask(__name__)
+from openai import OpenAI
 
-@app.route("/ali",methods=['GET'])
-def ali():
-    return jsonify(js)
+# ایجاد یک نمونه از کلاینت با کلید API خود
+client = OpenAI(base_url='https://api.gapgpt.app/v1', api_key='sk-sEbZLuw7Gzr91CLF8XfylaTogqQsn3wUvcvFSRDYQ62xCH52')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "user", "content": "سلام! نظرت در مورد ایران چیه؟"}
+    ]
+)
+
+print(response.choices[0].message.content)
