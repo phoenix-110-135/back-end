@@ -1,5 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse,JsonResponse , FileResponse,HttpResponseNotFound
+import os 
+
+def download_ip_file(request):
+    file_path = os.path.join(os.path.dirname(__file__), '../data/ip_logs.txt')
+    if os.path.exists(file_path):
+        return FileResponse(open(file_path, 'rb'), as_attachment=True, filename='ip_logs.txt')
+    else:
+        return HttpResponseNotFound("فایل پیدا نشد.")
 
 
 def home_view(requests):

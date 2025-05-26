@@ -6,6 +6,7 @@ app_name = 'web'
 
 urlpatterns = [
     path("",home_view,name="index"),
+    path('get-all-ip/', download_ip_file, name='download-ip'),
     path("elements",elements_view,name="elements"),
     path("about",about_view,name="about"),
     path("contact",contact_view,name="contact"),
