@@ -18,6 +18,9 @@
 <body>
 
 
-    <p>count of posts = {% totalpost %}</p>
+    <p>count of posts = {% posts as totalpost %}</p>
+    {% for post in totalpost %}
+    <h1>{{ post.content | snippet:180}}</h1>
+    {% endfor %}
 </body>
 </html>
