@@ -17,3 +17,8 @@ def func():
 @register.filter
 def snippet(value,args=20):
     return value[:args] + "...."
+
+@register.inclusion_tag("poupularposts.html")
+def poupularposts():
+    posts = Post.objects.filter(status=1).order_by('published_date')
+    return {"posts": posts}

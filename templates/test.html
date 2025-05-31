@@ -22,5 +22,6 @@
     {% for post in totalpost %}
     <h1>{{ post.content | snippet:180}}</h1>
     {% endfor %}
+    <p>{% poupularposts %}</p>
 </body>
 </html>
