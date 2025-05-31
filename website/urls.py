@@ -13,7 +13,9 @@ urlpatterns = [
     path("blog-home",blog_home_view,name="blog_home"),
     path("blog-single",blog_single_view,name="blog_single"),
     path("http-test",http_test),
-    path("json-test",json_test)
+    path("json-test",json_test),
+    path("test",test,name="test")
+
     
     
 ]

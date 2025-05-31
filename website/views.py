@@ -34,3 +34,5 @@ def http_test(requests):
 def json_test(requests):
     return JsonResponse({"response" : 200})
 
+def test(requests):
+    return render(requests,"test.html")

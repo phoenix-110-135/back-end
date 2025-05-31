@@ -1,14 +1,23 @@
+{% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        p{
+            display: inline;
+            font-size: larger;
+            font-weight: 700;
+            color: aqua;
+            background-image: linear-gradient(to top,red,blue);
+        }
+    </style>
 </head>
 <body>
 
 
-    <p>{{posts.title}}</p>
-
+    <p>count of posts = {% totalpost %}</p>
 </body>
 </html>
