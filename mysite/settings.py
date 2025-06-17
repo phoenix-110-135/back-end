@@ -50,6 +50,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'myapp.middleware.log_ip_middleware.LogIPMiddleware',
+    # 'myapp.middleware.blocked_ip_middleware.BlockedIPMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
