@@ -113,10 +113,10 @@
 					</div>
 					<div class="col-lg-9 col-md-9 ">
 						<div class="feature-img">
-							<img class="img-fluid" src="{{post.image.url}}" alt="">
+							<img style="border-radius: 10%;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);" class="img-fluid" src="{{post.image.url}}" alt="">
 						</div>
 						<a class="posts-title" href="{% url 'blog:single' pid=post.id %}">
-							<h3>{{post.title}}</h3>
+							<h3 style="font-weight: bold;color: #333;text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">{{post.title}}</h3>
 						</a>
 						<p class="excert">
 							{{post.content|truncatewords:17}}
@@ -160,9 +160,9 @@
 						</form>
 					</div>
                     {% include 'blog/blog-writer.html' %}
-					{% include 'blog/blog-popular-post.html' %}
+					{% latestposts 2 %}
+
 					{% include 'blog/blog-ads.html' %}
-					{% postcategory %}
 					<div class="single-sidebar-widget newsletter-widget">
 						<h4 class="newsletter-title">Newsletter</h4>
 						<p>
@@ -187,23 +187,7 @@
 							You can unsubscribe at any time
 						</p>
 					</div>
-					<div class="single-sidebar-widget tag-cloud-widget">
-						<h4 class="tagcloud-title">Tag Clouds</h4>
-						<ul>
-							<li><a href="#">Technology</a></li>
-							<li><a href="#">Fashion</a></li>
-							<li><a href="#">Architecture</a></li>
-							<li><a href="#">Fashion</a></li>
-							<li><a href="#">Food</a></li>
-							<li><a href="#">Technology</a></li>
-							<li><a href="#">Lifestyle</a></li>
-							<li><a href="#">Art</a></li>
-							<li><a href="#">Adventure</a></li>
-							<li><a href="#">Food</a></li>
-							<li><a href="#">Lifestyle</a></li>
-							<li><a href="#">Adventure</a></li>
-						</ul>
-					</div>
+					{% postscategories %}
 				</div>
 			</div>
 		</div>
