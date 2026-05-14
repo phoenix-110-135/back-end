@@ -1,9 +1,22 @@
 from django.shortcuts import render , get_object_or_404
 from blog.models import Post , Category
+from django.core.paginator import Paginator , PageNotAnInteger,EmptyPage
 # Create your views here.
-def blog_view(requests):
-    post = Post.objects.filter(status=1)
-    context = {'posts':post}
+def blog_view(requests,**kwargs):
+    posts = Post.objects.filter(status=1)
+    if kwargs.get('cat_name') != None:
+        posts = Post.objects.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('author_username') != None:
+        posts = Post.objects.filter(author__username=kwargs['author_username'])
+    posts = Paginator(posts,3)
+    try:
+        page_number = requests.GET.get('page')
+        posts = posts.get_page(page_number)
+    except PageNotAnInteger:
+        posts = posts.get_page(1)
+    except EmptyPage:
+        posts = posts.get_page(1)
+    context = {'posts':posts}
     return render(requests,'blog/blog-home.html',context)
 
 def blog_single(requests,pid):
@@ -26,3 +39,10 @@ def blog_category(requests,cat_name):
     posts = Post.objects.filter(category=category)
     context = {'posts': posts}
     return render(requests, 'blog/blog-home.html', context)
+
+def blog_search(requests):
+    if requests.method == "GET":
+        if s := requests.GET.get("s"):
+            post = Post.objects.filter(content__contains=s)
+    context = {'posts':post}
+    return render(requests,'blog/blog-home.html',context)
